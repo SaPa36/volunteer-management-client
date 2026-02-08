@@ -1,18 +1,34 @@
-import { useState } from 'react'; // Added useState
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react'; // Added useState
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Install react-icons if you haven't
 import logo from '../../assets/logo.png';
 import google from '../../assets/google.png';
+import { AuthContext } from '../../provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+    const {signIn} = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
+
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        signIn(email, password)
+            .then(result => {
+                toast.success("Login Successfully");
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                navigate(location.state?.from?.pathname || "/");
+            })
+            .catch(error => {
+                toast.error("Login Failed");
+                console.error(error);
+            });
     };
 
     return (
