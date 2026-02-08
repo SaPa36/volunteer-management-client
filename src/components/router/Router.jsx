@@ -1,36 +1,44 @@
 import {
-  createBrowserRouter,
-  RouterProvider,
+    createBrowserRouter,
+    RouterProvider,
 } from "react-router-dom";
 import Home from "../pages/Home";
 import Root from "../layouts/Root";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import NotFound from "../error/NotFound";
+import PrivateRouter from "./PrivateRouter";
+import AddVolunteerPost from "../pages/AddVolunteerPost";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root></Root>,
-    children: [
-      {
+    {
         path: "/",
-        element: <Home></Home>
-      },
-      {
-        path: "/login",
-        element: <Login></Login>
-      },
-      {
-        path: "/register",
-        element: <Register></Register>
-      }
-    ]
-  },
-  {
-    path: "*",
-    element: <NotFound></NotFound>
-  }
+        element: <Root></Root>,
+        children: [
+            {
+                path: "/",
+                element: <Home></Home>
+            },
+            {
+                path: "/login",
+                element: <Login></Login>
+            },
+            {
+                path: "/register",
+                element: <Register></Register>
+            },
+            {
+                path: "/add-volunteer",
+                element: <PrivateRouter>
+                    <AddVolunteerPost></AddVolunteerPost>
+                </PrivateRouter>
+            }
+        ]
+    },
+    {
+        path: "*",
+        element: <NotFound></NotFound>
+    }
 ]);
 
 export default router;
