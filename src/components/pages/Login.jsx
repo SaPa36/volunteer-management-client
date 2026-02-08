@@ -7,7 +7,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 import { toast } from 'react-toastify';
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
+    const {signIn, googleSignIn} = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
 
     const location = useLocation();
@@ -30,6 +30,18 @@ const Login = () => {
                 console.error(error);
             });
     };
+
+     const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                navigate(location.state?.from?.pathname || "/");
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
 
     return (
         <div className="min-h-[calc(100vh-64px)] flex items-center justify-center bg-white px-4 py-4">
@@ -91,7 +103,7 @@ const Login = () => {
 
                         <div className="divider text-slate-400 text-[10px] font-bold tracking-widest uppercase py-2">OR</div>
 
-                        <button type="button" className="btn btn-outline w-full h-11 border-slate-200 rounded-xl hover:bg-slate-50 hover:text-slate-700 font-bold flex items-center justify-center gap-3">
+                        <button onClick={handleGoogleSignIn} type="button" className="btn btn-outline w-full h-11 border-slate-200 rounded-xl hover:bg-slate-50 hover:text-slate-700 font-bold flex items-center justify-center gap-3">
                             <img src={google} alt="Google" className="w-5 h-5" />
                             Continue with Google
                         </button>
