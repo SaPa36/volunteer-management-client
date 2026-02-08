@@ -1,8 +1,34 @@
+import { useContext, useState } from 'react'; // Added useState
 import { Link } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Ensure react-icons is installed
 import logo from '../../assets/logo.png';
 import google from '../../assets/google.png';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Register = () => {
+
+    const {createUser} = useContext(AuthContext);
+    const [showPassword, setShowPassword] = useState(false); // State for toggle
+
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const photoURL = form.photoURL.value;
+        const password = form.password.value;
+
+        console.log(name, email, photoURL, password);
+        createUser(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    };
+
     return (
         <div className="min-h-[calc(100vh-64px)] flex items-center justify-center bg-white px-4 py-6">
             <div className="relative group w-full max-w-md">
@@ -20,7 +46,7 @@ const Register = () => {
                         </h2>
                     </div>
 
-                    <form className="space-y-3">
+                    <form className="space-y-3" onSubmit={handleSignUp}>
                         {/* Name Field */}
                         <div className="form-control">
                             <label className="label py-0.5">
@@ -28,7 +54,8 @@ const Register = () => {
                             </label>
                             <input 
                                 type="text" 
-                                placeholder="John Doe" 
+                                placeholder="John Doe"
+                                name='name' 
                                 className="input input-bordered h-10 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none text-sm" 
                                 required 
                             />
@@ -40,7 +67,8 @@ const Register = () => {
                                 <span className="label-text font-bold text-slate-700">Email Address</span>
                             </label>
                             <input 
-                                type="email" 
+                                type="email"
+                                name='email' 
                                 placeholder="name@example.com" 
                                 className="input input-bordered h-10 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none text-sm" 
                                 required 
@@ -53,24 +81,35 @@ const Register = () => {
                                 <span className="label-text font-bold text-slate-700">Photo URL</span>
                             </label>
                             <input 
-                                type="url" 
+                                type="text"
+                                name='photoURL' 
                                 placeholder="https://image-link.com" 
                                 className="input input-bordered h-10 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none text-sm" 
                                 required 
                             />
                         </div>
 
-                        {/* Password Field */}
+                        {/* Password Field with Toggle */}
                         <div className="form-control">
                             <label className="label py-0.5">
                                 <span className="label-text font-bold text-slate-700">Password</span>
                             </label>
-                            <input 
-                                type="password" 
-                                placeholder="••••••••" 
-                                className="input input-bordered h-10 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none text-sm" 
-                                required 
-                            />
+                            <div className="relative">
+                                <input 
+                                    type={showPassword ? "text" : "password"} 
+                                    name='password'
+                                    placeholder="••••••••" 
+                                    className="input input-bordered h-10 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none text-sm pr-10" 
+                                    required 
+                                />
+                                <button 
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-indigo-600 transition-colors"
+                                >
+                                    {showPassword ? <FaEyeSlash size={16} /> : <FaEye size={16} />}
+                                </button>
+                            </div>
                         </div>
 
                         {/* Register Button */}
@@ -81,7 +120,7 @@ const Register = () => {
                         <div className="divider text-slate-400 text-[10px] font-bold tracking-widest uppercase py-1">OR</div>
 
                         {/* Google Button */}
-                        <button type="button" className="btn btn-outline w-full h-11 border-slate-200 rounded-xl hover:bg-slate-50 hover:text-slate-700 font-bold flex items-center justify-center gap-3">
+                        <button type="button" className="btn btn-outline w-full h-11 border-slate-200 rounded-xl hover:bg-slate-50 hover:text-slate-700 font-bold flex items-center justify-center gap-3 transition-all">
                             <img src={google} alt="Google" className="w-5 h-5" />
                             Sign up with Google
                         </button>
