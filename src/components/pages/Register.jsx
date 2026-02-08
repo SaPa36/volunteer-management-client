@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'; // Added useState
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Ensure react-icons is installed
 import logo from '../../assets/logo.png';
 import google from '../../assets/google.png';
@@ -9,8 +9,9 @@ import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
 
-    const {createUser} = useContext(AuthContext);
+    const { createUser, logOut } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false); // State for toggle
+    const navigate = useNavigate();
 
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -53,6 +54,12 @@ const Register = () => {
                 form.reset();
                 const createdAt = result.user?.metadata?.creationTime;
 
+                logOut()
+                    .then(() => {
+                        toast.success("Registration Successful! Please Login.");
+                        navigate("/login"); // Redirect to login page
+                    })
+
                 const user = {
                     name,
                     email,
@@ -81,10 +88,10 @@ const Register = () => {
             <div className="relative group w-full max-w-md">
                 {/* Glow Effect */}
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-orange-400 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                
+
                 {/* Main Card */}
                 <div className="relative bg-white border border-slate-100 rounded-3xl px-8 py-6 shadow-xl">
-                    
+
                     {/* Header */}
                     <div className="text-center mb-4">
                         <img src={logo} alt="Logo" className="w-12 h-12 mx-auto object-contain mb-2" />
@@ -99,12 +106,12 @@ const Register = () => {
                             <label className="label py-0.5">
                                 <span className="label-text font-bold text-slate-700">Full Name</span>
                             </label>
-                            <input 
-                                type="text" 
+                            <input
+                                type="text"
                                 placeholder="John Doe"
-                                name='name' 
-                                className="input input-bordered h-10 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none text-sm" 
-                                required 
+                                name='name'
+                                className="input input-bordered h-10 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none text-sm"
+                                required
                             />
                         </div>
 
@@ -113,12 +120,12 @@ const Register = () => {
                             <label className="label py-0.5">
                                 <span className="label-text font-bold text-slate-700">Email Address</span>
                             </label>
-                            <input 
+                            <input
                                 type="email"
-                                name='email' 
-                                placeholder="name@example.com" 
-                                className="input input-bordered h-10 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none text-sm" 
-                                required 
+                                name='email'
+                                placeholder="name@example.com"
+                                className="input input-bordered h-10 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none text-sm"
+                                required
                             />
                         </div>
 
@@ -127,12 +134,12 @@ const Register = () => {
                             <label className="label py-0.5">
                                 <span className="label-text font-bold text-slate-700">Photo URL</span>
                             </label>
-                            <input 
+                            <input
                                 type="text"
-                                name='photoURL' 
-                                placeholder="https://image-link.com" 
-                                className="input input-bordered h-10 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none text-sm" 
-                                required 
+                                name='photoURL'
+                                placeholder="https://image-link.com"
+                                className="input input-bordered h-10 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none text-sm"
+                                required
                             />
                         </div>
 
@@ -142,14 +149,14 @@ const Register = () => {
                                 <span className="label-text font-bold text-slate-700">Password</span>
                             </label>
                             <div className="relative">
-                                <input 
-                                    type={showPassword ? "text" : "password"} 
+                                <input
+                                    type={showPassword ? "text" : "password"}
                                     name='password'
-                                    placeholder="••••••••" 
-                                    className="input input-bordered h-10 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none text-sm pr-10" 
-                                    required 
+                                    placeholder="••••••••"
+                                    className="input input-bordered h-10 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none text-sm pr-10"
+                                    required
                                 />
-                                <button 
+                                <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
                                     className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-indigo-600 transition-colors"
