@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import Root from "../layouts/Root";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import NotFound from "../error/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: "*",
+    element: <NotFound></NotFound>
+  }
 ]);
 
 export default router;
