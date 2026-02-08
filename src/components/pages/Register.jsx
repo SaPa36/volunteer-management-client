@@ -4,6 +4,8 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Ensure react-icons is ins
 import logo from '../../assets/logo.png';
 import google from '../../assets/google.png';
 import { AuthContext } from '../../provider/AuthProvider';
+import Swal from 'sweetalert2';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
 
@@ -18,11 +20,56 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const password = form.password.value;
 
+        //passwrord validation
+        //password checkinng
+        if (password.length < 6) {
+            toast.error("Password Can not be less then 6 charecter", {});
+            return;
+        }
+        else if (!/[A-Z]/.test(password)) {
+            toast.error("Password must be one UpperCase Charecter", {});
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            toast.error("Password must be one LowerCase Charecter", {});
+            return;
+        }
+
+
         console.log(name, email, photoURL, password);
         createUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+
+                Swal.fire({
+                    title: "Registration Successful!",
+                    icon: "success",
+                    draggable: true
+                });
+
+                const createdUser = result.user;
+                console.log(createdUser);
+                form.reset();
+                const createdAt = result.user?.metadata?.creationTime;
+
+                const user = {
+                    name,
+                    email,
+                    createdAt
+                };
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    })
             })
             .catch(error => {
                 console.error(error);
@@ -135,6 +182,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer position="top-center" reverseOrder={false} />
         </div>
     );
 };

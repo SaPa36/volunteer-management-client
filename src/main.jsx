@@ -9,6 +9,8 @@ import {
 } from "react-router-dom";
 import router from './components/router/Router.jsx';
 import AuthProvider from './provider/AuthProvider.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
