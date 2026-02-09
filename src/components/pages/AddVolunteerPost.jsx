@@ -5,14 +5,14 @@ import { AuthContext } from '../../provider/AuthProvider';
 import { toast } from 'react-toastify';
 
 const AddVolunteerPost = () => {
-    const { user } = useContext(AuthContext); // Sourcing user data from global state
+    const { user } = useContext(AuthContext); 
     const [startDate, setStartDate] = useState(new Date());
 
     const handleAddPost = (e) => {
         e.preventDefault();
         const form = e.target;
         
-        const formData = {
+        const newPost = {
             thumbnail: form.thumbnail.value,
             title: form.title.value,
             description: form.description.value,
@@ -24,62 +24,41 @@ const AddVolunteerPost = () => {
             organizerEmail: user?.email
         };
 
-        console.log(formData);
-        toast.success("Post Created Successfully!");
+        console.log(newPost);
+        toast.success("Volunteer Post Created!");
     };
 
     return (
         <div className="min-h-screen bg-slate-50 py-12 px-4 flex justify-center items-center">
-            {/* Decreased max-width to max-w-2xl for a more compact look */}
-            <div className="w-full max-w-2xl bg-white rounded-3xl shadow-[0_20px_50px_rgba(99,102,241,0.15)] border border-slate-100 overflow-hidden">
+            {/* High-contrast shadow to separate from background */}
+            <div className="w-full max-w-3xl bg-white rounded-[2.5rem] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.2)] border border-slate-200 overflow-hidden">
                 
-                {/* Slimmer Header with the same gradient */}
-                <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-orange-500 py-6 px-8 text-center text-white">
-                    <h2 className="text-2xl font-black tracking-tight">Create Post</h2>
-                    <p className="text-xs text-indigo-100 opacity-80 uppercase tracking-widest mt-1">Volunteer Need Details</p>
+                {/* Brand Gradient Header */}
+                <div className="bg-gradient-to-r from-[#6366f1] via-[#a855f7] to-[#f97316] py-8 px-10 text-center text-white">
+                    <h2 className="text-3xl font-black tracking-tight">Create Post</h2>
+                    <p className="text-xs font-bold text-indigo-100 uppercase tracking-widest mt-1 opacity-90">Volunteer Need Details</p>
                 </div>
 
-                <form onSubmit={handleAddPost} className="p-6 md:p-8 space-y-5">
+                <form onSubmit={handleAddPost} className="p-8 md:p-12 space-y-6">
                     
-                    {/* Compact Grid Structure */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Consistent 2-Column Grid for ALL inputs */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
                         
-                        {/* Thumbnail - Full Width */}
-                        <div className="md:col-span-2">
-                            <label className="text-xs font-bold text-slate-500 uppercase ml-1 mb-1.5 block">Thumbnail URL</label>
-                            <input 
-                                type="url" 
-                                name="thumbnail" 
-                                className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-400 focus:bg-white focus:ring-2 focus:ring-indigo-100 transition-all outline-none text-sm" 
-                                required 
-                            />
-                        </div>
-
-                        {/* Title - Full Width */}
-                        <div className="md:col-span-2">
-                            <label className="text-xs font-bold text-slate-500 uppercase ml-1 mb-1.5 block">Post Title</label>
-                            <input 
-                                type="text" 
-                                name="title" 
-                                className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-400 focus:bg-white focus:ring-2 focus:ring-indigo-100 transition-all outline-none text-sm" 
-                                required 
-                            />
-                        </div>
-
-                        {/* Description - Full Width */}
-                        <div className="md:col-span-2">
-                            <label className="text-xs font-bold text-slate-500 uppercase ml-1 mb-1.5 block">Description</label>
-                            <textarea 
-                                name="description" 
-                                className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-400 focus:bg-white focus:ring-2 focus:ring-indigo-100 transition-all outline-none h-24 resize-none text-sm" 
-                                required 
-                            ></textarea>
-                        </div>
-
-                        {/* Category */}
+                        {/* Row 1: Thumbnail & Title */}
                         <div>
-                            <label className="text-xs font-bold text-slate-500 uppercase ml-1 mb-1.5 block">Category</label>
-                            <select name="category" className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-400 transition-all outline-none text-sm">
+                            <label className="text-xs font-black text-slate-500 uppercase tracking-wider ml-1 mb-2 block">Thumbnail URL</label>
+                            <input type="url" name="thumbnail" placeholder="https://..." className="w-full px-4 py-3 rounded-xl bg-white border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-50 transition-all outline-none text-slate-700" required />
+                        </div>
+
+                        <div>
+                            <label className="text-xs font-black text-slate-500 uppercase tracking-wider ml-1 mb-2 block">Post Title</label>
+                            <input type="text" name="title" placeholder="Enter title" className="w-full px-4 py-3 rounded-xl bg-white border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-50 transition-all outline-none text-slate-700" required />
+                        </div>
+
+                        {/* Row 2: Category & Location */}
+                        <div>
+                            <label className="text-xs font-black text-slate-500 uppercase tracking-wider ml-1 mb-2 block">Category</label>
+                            <select name="category" className="w-full px-4 py-3 rounded-xl bg-white border-2 border-slate-200 focus:border-indigo-500 transition-all outline-none text-slate-700 font-medium appearance-none">
                                 <option value="healthcare">Healthcare</option>
                                 <option value="education">Education</option>
                                 <option value="social service">Social Service</option>
@@ -87,44 +66,46 @@ const AddVolunteerPost = () => {
                             </select>
                         </div>
 
-                        {/* Location */}
                         <div>
-                            <label className="text-xs font-bold text-slate-500 uppercase ml-1 mb-1.5 block">Location</label>
-                            <input type="text" name="location" className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-400 transition-all outline-none text-sm" required />
+                            <label className="text-xs font-black text-slate-500 uppercase tracking-wider ml-1 mb-2 block">Location</label>
+                            <input type="text" name="location" placeholder="City, Country" className="w-full px-4 py-3 rounded-xl bg-white border-2 border-slate-200 focus:border-indigo-500 transition-all outline-none text-slate-700" required />
                         </div>
 
-                        {/* Volunteers Needed */}
+                        {/* Row 3: Volunteers & Deadline */}
                         <div>
-                            <label className="text-xs font-bold text-slate-500 uppercase ml-1 mb-1.5 block">Volunteers Needed</label>
-                            <input type="number" name="volunteersNeeded" min="1" className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-400 transition-all outline-none text-sm" required />
+                            <label className="text-xs font-black text-slate-500 uppercase tracking-wider ml-1 mb-2 block">Volunteers Needed</label>
+                            <input type="number" name="volunteersNeeded" placeholder="Quantity" className="w-full px-4 py-3 rounded-xl bg-white border-2 border-slate-200 focus:border-indigo-500 transition-all outline-none text-slate-700" required />
                         </div>
 
-                        {/* Deadline */}
                         <div>
-                            <label className="text-xs font-bold text-slate-500 uppercase ml-1 mb-1.5 block">Deadline</label>
+                            <label className="text-xs font-black text-slate-500 uppercase tracking-wider ml-1 mb-2 block">Deadline</label>
                             <DatePicker 
                                 selected={startDate} 
                                 onChange={(date) => setStartDate(date)} 
-                                className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-400 transition-all outline-none text-sm"
+                                className="w-full px-4 py-3 rounded-xl bg-white border-2 border-slate-200 focus:border-indigo-500 transition-all outline-none text-slate-700"
                                 dateFormat="dd/MM/yyyy"
                             />
                         </div>
 
-                        {/* Organizer Info (Read-Only Badges) */}
-                        <div className="md:col-span-2 flex flex-col sm:flex-row gap-3 mt-2">
-                            <div className="flex-1 bg-indigo-50/50 p-3 rounded-lg border border-indigo-100">
-                                <span className="text-[10px] font-black uppercase text-indigo-400 block mb-0.5">Organizer</span>
-                                <p className="text-slate-700 font-bold text-xs">{user?.displayName || "Loading..."}</p>
-                            </div>
-                            <div className="flex-1 bg-orange-50/50 p-3 rounded-lg border border-orange-100">
-                                <span className="text-[10px] font-black uppercase text-orange-400 block mb-0.5">Email</span>
-                                <p className="text-slate-700 font-bold text-xs">{user?.email || "Loading..."}</p>
-                            </div>
+                        {/* Row 4: Organizer Badges */}
+                        <div className="bg-indigo-50 border-2 border-indigo-100 p-3 rounded-xl">
+                            <span className="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-0.5">Organizer</span>
+                            <p className="text-slate-700 font-bold text-sm">{user?.displayName}</p>
+                        </div>
+                        <div className="bg-orange-50 border-2 border-orange-100 p-3 rounded-xl overflow-hidden">
+                            <span className="text-[10px] font-black text-orange-400 uppercase tracking-widest block mb-0.5">Contact Email</span>
+                            <p className="text-slate-700 font-bold text-sm truncate">{user?.email}</p>
+                        </div>
+
+                        {/* Row 5: Description (Spans Full Width at Bottom) */}
+                        <div className="md:col-span-2">
+                            <label className="text-xs font-black text-slate-500 uppercase tracking-wider ml-1 mb-2 block">Mission Description</label>
+                            <textarea name="description" className="w-full px-4 py-3 rounded-xl bg-white border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-50 transition-all outline-none h-32 resize-none text-slate-700" placeholder="Tell us about the volunteering opportunity..." required></textarea>
                         </div>
                     </div>
 
-                    {/* Compact Submit Button */}
-                    <button className="w-full py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-black text-sm uppercase tracking-widest rounded-xl hover:brightness-110 shadow-lg transition-all active:scale-95">
+                    {/* Submit Button */}
+                    <button className="w-full py-4 mt-4 bg-gradient-to-r from-[#6366f1] via-[#a855f7] to-[#f97316] text-white font-black text-sm uppercase tracking-[0.2em] rounded-2xl shadow-xl hover:brightness-110 active:scale-[0.98] transition-all">
                         Publish Now
                     </button>
                 </form>
