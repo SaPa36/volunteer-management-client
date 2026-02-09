@@ -45,7 +45,7 @@ const WhyVolunteer = () => {
                             className="group relative bg-white p-5 rounded-[3.5rem] shadow-2xl hover:shadow-[0_40px_80px_-15px_rgba(99,102,241,0.2)] transition-all duration-500 flex flex-col items-center text-center border border-slate-50"
                         >
                             {/* Icon Container with subtle inner shadow */}
-                            <div className="w-24 h-24 bg-slate-50 rounded-[2rem] flex items-center justify-center text-4xl  shadow-inner group-hover:scale-110 transition-transform duration-500">
+                            <div className="w-24 h-24 bg-slate-50 rounded-[2rem] flex items-center justify-center text-4xl   group-hover:scale-110 transition-transform duration-500">
                                 {item.icon}
                             </div>
                             

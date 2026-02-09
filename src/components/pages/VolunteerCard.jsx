@@ -62,7 +62,7 @@ const VolunteerCard = ({ volunteerPost, index }) => {
                 {/* Footer */}
                 <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
                     <Link 
-                        to={`/post-details/${_id}`} 
+                        to={`/volunteers-posts/${_id}`} 
                         className="flex items-center gap-1 text-indigo-600 font-black text-sm group/btn"
                     >
                         View Details 
