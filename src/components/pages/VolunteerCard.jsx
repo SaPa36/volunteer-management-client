@@ -54,7 +54,7 @@ const VolunteerCard = ({ volunteerPost, index }) => {
                     {title}
                 </h3>
 
-                <div className="flex items-center gap-1 text-slate-500 text-sm mb-6">
+                <div className="flex items-center gap-1 text-slate-500 text-sm ">
                     <FaMapMarkerAlt className="text-orange-400" />
                     <span className="truncate">{location}</span>
                 </div>
