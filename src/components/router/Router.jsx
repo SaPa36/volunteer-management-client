@@ -11,6 +11,8 @@ import PrivateRouter from "./PrivateRouter";
 import AddVolunteerPost from "../pages/AddVolunteerPost";
 import PostDetails from "../pages/PostDetails";
 import BeAVolunteer from "../pages/BeAVolunteer";
+import NeedVolunteer from "../pages/NeedVolunteers";
+import NeedVolunteers from "../pages/NeedVolunteers";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +37,12 @@ const router = createBrowserRouter([
                 element: <BeAVolunteer></BeAVolunteer>,
                 loader: ({params}) => fetch(`https://volunteer-management-server-bay.vercel.app/volunteers-posts/${params.id}`)
             },
+            {
+                path: '/need-volunteer',
+                element: <NeedVolunteers></NeedVolunteers>,
+                loader: () => fetch('https://volunteer-management-server-bay.vercel.app/volunteers-posts')
+            },
+
 
             // Protected Route
             {
