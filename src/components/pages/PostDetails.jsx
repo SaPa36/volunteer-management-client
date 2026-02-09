@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { FaMapMarkerAlt, FaCalendarAlt, FaUserEdit, FaTag, FaUsers, FaHandsHelping, FaCheckCircle } from 'react-icons/fa';
 import { AuthContext } from '../../provider/AuthProvider';
 
@@ -20,7 +20,8 @@ const PostDetails = () => {
     }
 
     // Pulling data from the post object
-    const { 
+    const {
+        _id, 
         thumbnail, title, description, category, location, 
         volunteersNeeded, deadline, 
         
@@ -114,9 +115,11 @@ const PostDetails = () => {
                         </div>
 
                         {/* Submit Button */}
-                        <button className='bg-gradient-to-r from-indigo-600 via-purple-500 to-orange-500 text-white hover:brightness-110 active:scale-[0.98] w-full py-4 rounded-xl font-black uppercase tracking-[0.2em] text-xs transition-all flex items-center justify-center gap-2 shadow-2xl shadow-indigo-500/10'>
-                            Join Mission <FaHandsHelping className="text-base" />
+                        <Link to={`/be-a-volunteer/${_id}`} className="w-full">
+                            <button className='bg-gradient-to-r from-indigo-600 via-purple-500 to-orange-500 text-white hover:brightness-110 active:scale-[0.98] w-full py-4 rounded-xl font-black uppercase tracking-[0.2em] text-xs transition-all flex items-center justify-center gap-2 shadow-2xl shadow-indigo-500/10'>
+                            Be a Volunteer <FaHandsHelping className="text-base" />
                         </button>
+                        </Link>
                     </div>
 
                 </div>

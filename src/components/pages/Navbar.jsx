@@ -22,7 +22,7 @@ const Navbar = () => {
         <>
             <li><NavLink to="/" className={linkStyles}>Home</NavLink></li>
             <li><NavLink to="/need-volunteer" className={linkStyles}>Need Volunteer</NavLink></li>
-            <li><NavLink to="/be-volunteer" className={linkStyles}>Be a Volunteer</NavLink></li>
+            <li><NavLink to="/be-a-volunteer" className={linkStyles}>Be a Volunteer</NavLink></li>
         </>
     );
 

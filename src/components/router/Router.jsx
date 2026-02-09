@@ -10,6 +10,7 @@ import NotFound from "../error/NotFound";
 import PrivateRouter from "./PrivateRouter";
 import AddVolunteerPost from "../pages/AddVolunteerPost";
 import PostDetails from "../pages/PostDetails";
+import BeAVolunteer from "../pages/BeAVolunteer";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register></Register>
+            },
+            {
+                path: "/be-a-volunteer/:id",
+                element: <BeAVolunteer></BeAVolunteer>,
+                loader: ({params}) => fetch(`https://volunteer-management-server-bay.vercel.app/volunteers-posts/${params.id}`)
             },
 
             // Protected Route
