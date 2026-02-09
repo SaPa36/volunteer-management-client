@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.jsx'
 
 import {
-  
+
   RouterProvider
 } from "react-router-dom";
 import router from './components/router/Router.jsx';
@@ -15,8 +15,21 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 createRoot(document.getElementById('root')).render(
+
   <StrictMode>
     <AuthProvider>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <RouterProvider router={router} />
     </AuthProvider>
   </StrictMode>,
