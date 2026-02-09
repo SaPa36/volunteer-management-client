@@ -48,7 +48,7 @@ const BeAVolunteer = () => {
         };
 
         try {
-            const response = await fetch('https://your-server-repo.vercel.app/volunteerRequests', {
+            const response = await fetch('https://volunteer-management-server-bay.vercel.app/volunteer-requests', {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(volunteerRequest)
@@ -63,7 +63,7 @@ const BeAVolunteer = () => {
                     color: '#fff',
                     confirmButtonColor: '#06b6d4'
                 });
-                navigate('/my-volunteer-requested-posts');
+                //navigate('/my-volunteer-requested-posts');
             }
         } catch (error) {
             console.error("Error submitting request:", error);
