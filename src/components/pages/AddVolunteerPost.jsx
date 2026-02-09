@@ -30,7 +30,7 @@ const AddVolunteerPost = () => {
 
 
         //add to database
-        fetch('http://localhost:5000/volunteers-posts', {
+        fetch('https://volunteer-management-server-bay.vercel.app/volunteers-posts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

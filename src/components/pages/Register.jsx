@@ -66,7 +66,7 @@ const Register = () => {
                     createdAt
                 };
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://volunteer-management-server-bay.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
