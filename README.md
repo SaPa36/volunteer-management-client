@@ -15,7 +15,7 @@ A robust platform designed to connect passionate volunteers with meaningful oppo
 ### 🏠 Landing Page (Light & Mobile)
 | Desktop Home (Light Mode) | Mobile View |
 |:---:|:---:|
-| <img src="https://github.com/user-attachments/assets/19699c8f-f44a-427a-b414-d2c2c38844a0" height="450" width="800" alt="Desktop Light Mode" /> | <img src="https://github.com/user-attachments/assets/dbe7c354-169b-4535-b57f-b313da6db280" width="220" alt="Mobile Home" /> |
+| <img src="https://github.com/user-attachments/assets/19699c8f-f44a-427a-b414-d2c2c38844a0" height="600" width="800" alt="Desktop Light Mode" /> | <img src="https://github.com/user-attachments/assets/dbe7c354-169b-4535-b57f-b313da6db280" width="220" alt="Mobile Home" /> |
 
 ### 📋 User Dashboard (Manage Assets)
 | Manage My Posts | My Volunteer Requests |
@@ -25,7 +25,7 @@ A robust platform designed to connect passionate volunteers with meaningful oppo
 ### 🛠️ Core Functionality
 | Volunteers Need Section | Create Post Form |
 |:---:|:---:|
-| <img src="https://github.com/user-attachments/assets/2b49573a-a814-493a-b339-ae23cc4f304f" height="350" alt="Volunteers Need" /> | <img src="https://github.com/user-attachments/assets/8a3b9090-93c9-4055-ab5d-27d112a3d3cf" height="350" alt="Create Post" /> |
+| <img src="https://github.com/user-attachments/assets/2b49573a-a814-493a-b339-ae23cc4f304f" width="450" height="350" alt="Volunteers Need" /> | <img src="https://github.com/user-attachments/assets/8a3b9090-93c9-4055-ab5d-27d112a3d3cf" width="450" height="350" alt="Create Post" /> |
 
 ---
 
