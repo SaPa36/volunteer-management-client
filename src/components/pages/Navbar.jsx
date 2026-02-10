@@ -76,6 +76,7 @@ const Navbar = () => {
                                 <li className="font-bold text-slate-500 px-2 py-1 text-xs uppercase tracking-widest">My Profile</li>
                                 <li><Link to="/add-volunteer" className="hover:text-indigo-600 py-2">Add Volunteer Post</Link></li>
                                 <li><Link to="/my-posts" className="hover:text-indigo-600 py-2">Manage My Post</Link></li>
+                                <li><Link to="/my-volunteer-requests" className="hover:text-indigo-600 py-2">My Volunteer Requests</Link></li>
                                 <hr className="my-1 border-slate-100" />
                                 <li>
                                     <button 

@@ -15,6 +15,7 @@ import NeedVolunteer from "../pages/NeedVolunteers";
 import NeedVolunteers from "../pages/NeedVolunteers";
 import MyPosts from "../pages/MyPosts";
 import UpdatePost from "../pages/UpdatePost";
+import MyVolunteerRequests from "../pages/MyVolunteerRequests";
 
 const router = createBrowserRouter([
     {
@@ -67,13 +68,20 @@ const router = createBrowserRouter([
                 </PrivateRouter>,
 
             },
-            
+
             {
                 path: "/update-post/:id",
                 element: <PrivateRouter>
                     <UpdatePost></UpdatePost>
                 </PrivateRouter>,
                 loader: ({ params }) => fetch(`https://volunteer-management-server-bay.vercel.app/volunteers-posts/${params.id}`)
+            },
+
+            {
+                path: "/my-volunteer-requests",
+                element: <PrivateRouter>
+                       <MyVolunteerRequests></MyVolunteerRequests>
+                    </PrivateRouter>
             }
         ]
     },
