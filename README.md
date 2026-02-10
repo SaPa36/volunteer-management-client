@@ -72,20 +72,18 @@ A robust platform designed to connect passionate volunteers with meaningful oppo
 
 ### 1. Backend Setup
 ```bash
-git clone [your-repo-link]
+git clone https://github.com/SaPa36/volunteer-management-server.git
 cd volunteer-management-server
 npm install
 
 Create a .env file:
+DB_USER=volunteerAdmin
+DB_PASS=U32Vo5KWJWi0WHOB
 
-Code snippet
-DB_USER=your_db_username
-DB_PASS=your_db_password
-ACCESS_TOKEN_SECRET=your_generated_64_char_string
 npm start
 
 2. Frontend Setup
-Bash
+git clone https://github.com/SaPa36/volunteer-management-client.git
 cd volunteer-management-client
 npm install
 Create a .env.local with your Firebase config and npm run dev.
@@ -94,11 +92,11 @@ Create a .env.local with your Firebase config and npm run dev.
 Distributed under the MIT License. See LICENSE for more information.
 
 👤 Author
-Your Name
+Nur Sapa
 
-GitHub: @yourusername
+GitHub: @SaPa36
 
-LinkedIn: Your Profile
+
 
 
 ---
