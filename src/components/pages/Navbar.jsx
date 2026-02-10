@@ -75,7 +75,7 @@ const Navbar = () => {
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[20] p-4 shadow-2xl bg-white rounded-2xl w-56 gap-2 border border-slate-100">
                                 <li className="font-bold text-slate-500 px-2 py-1 text-xs uppercase tracking-widest">My Profile</li>
                                 <li><Link to="/add-volunteer" className="hover:text-indigo-600 py-2">Add Volunteer Post</Link></li>
-                                <li><Link to="/manage-posts" className="hover:text-indigo-600 py-2">Manage My Post</Link></li>
+                                <li><Link to="/my-posts" className="hover:text-indigo-600 py-2">Manage My Post</Link></li>
                                 <hr className="my-1 border-slate-100" />
                                 <li>
                                     <button 
