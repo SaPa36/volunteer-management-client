@@ -14,7 +14,7 @@ A robust platform designed to connect passionate volunteers with meaningful oppo
 |---|---|
 | ![Home Page](<img width="1368" height="601" alt="image" src="https://github.com/user-attachments/assets/d67c2f60-f022-4c7e-a2c7-44669b3aaeea" />
 
-<img width="591" height="1280" alt="image" src="https://github.com/user-attachments/assets/dbe7c354-169b-4535-b57f-b313da6db280" />
+<img width="300" height="601" alt="image" src="https://github.com/user-attachments/assets/dbe7c354-169b-4535-b57f-b313da6db280" />
 
 
 
