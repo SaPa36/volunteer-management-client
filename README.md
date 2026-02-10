@@ -10,18 +10,17 @@ A robust platform designed to connect passionate volunteers with meaningful oppo
 
 ## 📸 Screenshots
 
-| Desktop Home (Dark Mode) | Mobile View |
-|---|---|
-| ![Home Page](<img width="1368" height="601" alt="image" src="https://github.com/user-attachments/assets/d67c2f60-f022-4c7e-a2c7-44669b3aaeea" />
+| Desktop Home (Light Mode) 
+
+<img width="1369" height="603" alt="image" src="https://github.com/user-attachments/assets/19699c8f-f44a-427a-b414-d2c2c38844a0" />
+
 
 <img width="300" height="601" alt="image" src="https://github.com/user-attachments/assets/dbe7c354-169b-4535-b57f-b313da6db280" />
 
+Volunteers Need
 
+<img width="464" height="396" alt="image" src="https://github.com/user-attachments/assets/2b49573a-a814-493a-b339-ae23cc4f304f" />
 
-) | ![Mobile Home](<img width="591" height="1280" alt="image" src="https://github.com/user-attachments/assets/0f6bdd9d-aab2-4423-abf5-11f03570ca75" />
-) |
-
----
 
 ## ✨ Features
 
