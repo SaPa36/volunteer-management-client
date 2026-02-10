@@ -5,9 +5,10 @@ import logo from '../../assets/logo.png';
 import google from '../../assets/google.png';
 import { AuthContext } from '../../provider/AuthProvider';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const Login = () => {
-    const {signIn, googleSignIn} = useContext(AuthContext);
+    const { signIn, googleSignIn } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
 
     const location = useLocation();
@@ -23,7 +24,9 @@ const Login = () => {
                 toast.success("Login Successfully");
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                const user = { email };
                 navigate(location.state?.from?.pathname || "/");
+                
             })
             .catch(error => {
                 toast.error("Login Failed");
@@ -31,7 +34,7 @@ const Login = () => {
             });
     };
 
-     const handleGoogleSignIn = () => {
+    const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
                 const loggedUser = result.user;
@@ -47,7 +50,7 @@ const Login = () => {
         <div className="min-h-[calc(100vh-64px)] flex items-center justify-center bg-white px-4 py-4">
             <div className="relative group w-full max-w-md">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-orange-400 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                
+
                 <div className="relative bg-white border border-slate-100 rounded-3xl px-8 py-6 shadow-xl">
                     <div className="text-center mb-4">
                         <img src={logo} alt="Logo" className="w-14 h-14 mx-auto object-contain mb-2" />
@@ -60,12 +63,12 @@ const Login = () => {
                             <label className="label py-1">
                                 <span className="label-text font-bold text-slate-700">Email Address</span>
                             </label>
-                            <input 
-                                type="email" 
+                            <input
+                                type="email"
                                 name="email"
-                                placeholder="Enter your email" 
-                                className="input input-bordered rounded-lg h-11 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none" 
-                                required 
+                                placeholder="Enter your email"
+                                className="input input-bordered rounded-lg h-11 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none"
+                                required
                             />
                         </div>
 
@@ -80,14 +83,14 @@ const Login = () => {
                                 </Link>
                             </div>
                             <div className="relative">
-                                <input 
-                                    type={showPassword ? "text" : "password"} 
+                                <input
+                                    type={showPassword ? "text" : "password"}
                                     name="password"
-                                    placeholder="••••••••" 
-                                    className="input input-bordered rounded-lg h-11 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none pr-10" 
-                                    required 
+                                    placeholder="••••••••"
+                                    className="input input-bordered rounded-lg h-11 w-full bg-slate-50 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none pr-10"
+                                    required
                                 />
-                                <button 
+                                <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
                                     className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-indigo-600 transition-colors"

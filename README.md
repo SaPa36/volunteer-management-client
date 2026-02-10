@@ -1,16 +1,102 @@
-# React + Vite
+# 🤝 Volunteer Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A robust platform designed to connect passionate volunteers with meaningful opportunities. This application features secure authentication, real-time slot management, and a fully responsive design supporting both Light and Dark modes.
 
-Currently, two official plugins are available:
+## 🔗 Live Links
+* **Client Deployment:** [https://volunteer-management-1de8f.web.app](https://volunteer-management-1de8f.web.app)
+* **Server API:** [Your Vercel Server Link Here]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📸 Screenshots
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+| Desktop Home (Dark Mode) | Mobile View |
+|---|---|
+| ![Home Page](https://via.placeholder.com/800x450?text=Desktop+Home+Preview) | ![Mobile Home](https://via.placeholder.com/200x400?text=Mobile+Preview) |
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+* **Secure Authentication:** Uses **Firebase Auth** combined with **JSON Web Tokens (JWT)** stored in HTTP-only cookies for maximum security.
+* **Dynamic Banner:** High-performance, themed slider using **Swiper.js** with cross-fade effects.
+* **Volunteer Post Management:** Full CRUD (Create, Read, Update, Delete) capabilities for organizers.
+* **Real-time Availability:** Automatically decrements the number of volunteers needed when a user submits a request.
+* **Search & Filter:** Easily find opportunities using the integrated search bar on the "All Volunteer Posts" page.
+* **Responsive UI:** Beautifully crafted with **Tailwind CSS** and **DaisyUI**, featuring seamless theme switching.
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+* React.js (Vite)
+* React Router DOM (Private Routing)
+* Tailwind CSS & DaisyUI
+* Firebase Authentication
+* Axios (with HTTP-only cookie support)
+* React Toastify (Notifications)
+
+**Backend:**
+* Node.js & Express.js
+* MongoDB (NoSQL Database)
+* JWT (Authentication)
+* Cookie-parser
+
+---
+
+## 🔒 JWT Implementation Flow
+
+1.  **Login:** User logs in via Firebase (Email or Google).
+2.  **Token Generation:** The client sends the user's email to the `/jwt` endpoint.
+3.  **Secure Storage:** The server signs a token and sends it back in an `httpOnly`, `secure`, `sameSite: none` cookie.
+4.  **Verification:** Private API routes use a `verifyToken` middleware to validate the cookie before returning data.
+
+
+
+---
+
+## 🚀 Installation & Local Setup
+
+### Prerequisites
+* Node.js installed
+* MongoDB Atlas Account
+* Firebase Project
+
+### 1. Backend Setup
+```bash
+git clone [your-repo-link]
+cd volunteer-management-server
+npm install
+
+Create a .env file:
+
+Code snippet
+DB_USER=your_db_username
+DB_PASS=your_db_password
+ACCESS_TOKEN_SECRET=your_generated_64_char_string
+npm start
+
+2. Frontend Setup
+Bash
+cd volunteer-management-client
+npm install
+Create a .env.local with your Firebase config and npm run dev.
+
+📝 License
+Distributed under the MIT License. See LICENSE for more information.
+
+👤 Author
+Your Name
+
+GitHub: @yourusername
+
+LinkedIn: Your Profile
+
+
+---
+
+### Pro-Tip for your GitHub:
+Since you are about to push this, remember to **not** include your `.env` file. You should also check your **Network** tab in Chrome DevTools to ensure that when you log in, the `/jwt` request returns a `Set-Cookie` header. If it does, your README's "Security" section is 100% accurate!
+
+**Would you like me to help you generate a professional `LICENSE` file text to accompany this README?**
