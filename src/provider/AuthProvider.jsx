@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../firebase/firebase.config';
+import axios from 'axios';
 
 
 export const AuthContext = createContext();
@@ -34,7 +35,19 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(currentUser => {
             setUser(currentUser);
+            console.log("current user", currentUser)
             setLoading(false);
+
+            //if user exist then issue a token
+            if (currentUser) {
+                const loggedUser = { email: currentUser.email };
+                axios.post('https://volunteer-management-server-bay.vercel.app/jwt', loggedUser, {
+                    withCredentials: true
+                })
+                .then(res => {
+                    console.log('token response', res.data);
+                })
+            }
         });
         return () => {
             unsubscribe();
