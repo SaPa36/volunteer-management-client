@@ -91,7 +91,7 @@ const MyVolunteerRequests = () => {
                                                 <div className="flex items-center gap-2">
                                                     <FaUserTie className="text-indigo-400" /> 
                                                     {/* FIX: Using underscore here to match your Database */}
-                                                    {req.organizer_name || "Unknown"} 
+                                                    {user?.displayName || 'Unknown Organizer'} 
                                                 </div>
                                             </td>
                                             <td className="px-6 py-6 text-slate-600 font-bold text-sm">

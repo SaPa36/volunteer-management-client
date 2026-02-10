@@ -12,7 +12,7 @@ import volunteer3 from '../../assets/volunteer3.jpeg';
 
 const Banner = () => {
     return (
-        <div className="w-full h-[500px]  relative overflow-hidden bg-white">
+        <div className="w-full h-[500px] relative overflow-hidden ">
             
             {/* Background Decorative Gradient Blur */}
             <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-200/30 blur-[120px] rounded-full"></div>
@@ -29,7 +29,7 @@ const Banner = () => {
                 className="h-full w-full"
             >
                 {/* Slide 1 */}
-                <SwiperSlide className="bg-white"> {/* bg-white prevents ghosting from previous slides */}
+                <SwiperSlide className=""> {/* bg-white prevents ghosting from previous slides */}
                     <div className="grid grid-cols-1 md:grid-cols-2 h-full items-center px-6 md:px-16 gap-8">
                         <div className="order-2 md:order-1 space-y-6">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100">
@@ -62,7 +62,7 @@ const Banner = () => {
                 </SwiperSlide>
 
                 {/* Slide 2 */}
-                <SwiperSlide className="bg-white">
+                <SwiperSlide className="">
                     <div className="grid grid-cols-1 md:grid-cols-2 h-full items-center px-6 md:px-16 gap-8">
                         <div className="order-2 md:order-1 space-y-6">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-100">
@@ -92,7 +92,7 @@ const Banner = () => {
                 </SwiperSlide>
 
                 {/* Slide 3 */}
-                <SwiperSlide className="bg-white">
+                <SwiperSlide className="">
                     <div className="grid grid-cols-1 md:grid-cols-2 h-full items-center px-6 md:px-16 gap-8">
                         <div className="order-2 md:order-1 space-y-6">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-100">
