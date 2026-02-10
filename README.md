@@ -12,7 +12,9 @@ A robust platform designed to connect passionate volunteers with meaningful oppo
 
 | Desktop Home (Dark Mode) | Mobile View |
 |---|---|
-| ![Home Page](https://via.placeholder.com/800x450?text=Desktop+Home+Preview) | ![Mobile Home](https://via.placeholder.com/200x400?text=Mobile+Preview) |
+| ![Home Page](<img width="1353" height="602" alt="image" src="https://github.com/user-attachments/assets/9f28fbae-a214-4df2-9580-d39a3fb249c8" />
+
+) | ![Mobile Home](https://via.placeholder.com/200x400?text=Mobile+Preview) |
 
 ---
 
